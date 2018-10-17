@@ -6,9 +6,67 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="1080" Width="1920">
 
-    <Grid>
+    <Grid Margin="0,0,-414,-74" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        
+        <CommandBar IsSticky="False" IsOpen="False" Background="#474747" HorizontalAlignment="Stretch" Margin="0,0,414,0" VerticalAlignment="Top" >
+            <CommandBar.Content>
+                <StackPanel Name="Menu" Orientation="Horizontal" Background="#474747" VerticalAlignment="Center">
+                    <TextBlock Name="Title" Text="Paint" FontSize="26" Margin="20,0,20,0" VerticalAlignment="Center" Width="200" Foreground="#eee61a"/>
 
+                    <TextBlock Text="|" Margin="20,0,20,0" FontSize="30" FontWeight="ExtraLight" />
+
+                    <!--<Button Name="ColorButton" ToolTipService.ToolTip="Change color" ToolTipService.Placement="Bottom"
+                            Width="30" Height="30" Click="ColorButton_Click" Background="White" ></Button>-->
+
+                    <ListBox Name="SelectShapeListBox" SelectionMode="Single" SelectionChanged="SelectMenuListBox_SelectionChanged" Width="250" Height="50" Background="#474747" Margin="20,0,20,0" >
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBoxItem Name="CursorListBoxItem" Width="50" ToolTipService.ToolTip="Cursor" ToolTipService.Placement="Bottom" IsSelected="True">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text=" &#xE1E3;" FontSize="20" TextAlignment="Center"/>
+                        </ListBoxItem>
+                        <ListBoxItem Name="ResizeListBoxItem" Width="50" ToolTipService.ToolTip="Cursor2" ToolTipService.Placement="Bottom">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xe174;" FontSize="20" HorizontalAlignment="Center"/>
+                        </ListBoxItem>
+                        <ListBoxItem Name="LineListBoxItem" Width="50" ToolTipService.ToolTip="Draw Line" ToolTipService.Placement="Bottom">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8DB;" FontSize="20" TextAlignment="Center"/>
+                        </ListBoxItem>
+                        <ListBoxItem Name="RectangleListBoxItem" Width="50" ToolTipService.ToolTip="Draw Rectangle" ToolTipService.Placement="Bottom" >
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE003;" FontSize="20" HorizontalAlignment="Center"/>
+                        </ListBoxItem>
+                        <ListBoxItem Name="CircleListBoxItem" Width="50" ToolTipService.ToolTip="Draw Circle" ToolTipService.Placement="Bottom">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xEA3A;" FontSize="20" HorizontalAlignment="Center"/>
+                        </ListBoxItem>
+                    </ListBox>
+
+                    <TextBlock Text="|" Margin="20,0,20,0" FontSize="30" FontWeight="ExtraLight" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="X1TextBlock" Text="X1" FontSize="14" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                        <TextBox Name="X1TextBox" FontSize="14" Height="10" Width="80"/>
+                        <TextBlock Name="Y1TextBlock" Text="Y1" FontSize="14" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                        <TextBox Name="Y1TextBox" FontSize="14" Height="10" Width="80"/>
+
+                        <TextBlock Name="X2TextBlock" Text="X2" FontSize="14" VerticalAlignment="Center" Margin="30,0,5,0"/>
+                        <TextBox Name="X2TextBox" FontSize="14" Height="10" Width="80"/>
+                        <TextBlock Name="Y2TextBlock" Text="Y2" FontSize="14" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                        <TextBox Name="Y2TextBox" FontSize="14" Height="10" Width="80"/>
+
+                        <Button Name="ConfirmDimensions" Content="Confirm" FontSize="14" Margin="30,0,0,0" Click="ConfirmDimensions_Click" Background="LightGray"
+                                BorderBrush="Black" BorderThickness="2" />
+                    </StackPanel>
+                </StackPanel> 
+            </CommandBar.Content>
+            <AppBarButton Icon="Accept" Label="AppBarButton"/>
+            <AppBarButton Icon="Cancel" Label="AppBarButton"/>
+        </CommandBar>
+        <Canvas Name="MyCanvas" HorizontalAlignment="Left" Height="1040" Margin="0,40,0,0" VerticalAlignment="Top" Width="1920" Background="DarkViolet" AllowDrop="True" DragOver="Shape_DragOver" Drop="Shape_Drop">
+            <StackPanel HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Stretch" Width="100"/>
+        </Canvas>
     </Grid>
+
 </Page>
